@@ -4,7 +4,10 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 
 export const metadata: Metadata = {
-  title: 'devstore',
+  title: {
+    template: '%s | devstore',
+    default: 'devstore',
+  },
   description: 'store for devs',
 }
 
