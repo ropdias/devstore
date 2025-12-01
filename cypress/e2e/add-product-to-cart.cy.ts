@@ -10,12 +10,12 @@ describe('add product to cart', () => {
     cy.contains('Cart (1)').should('exist')
   })
 
-  it('should not count duplicated products on cart', () => {
+  it('should increment quantity when same product is added multiple times', () => {
     cy.get('a[href^="/product"]').first().click()
     cy.location('pathname').should('include', '/product')
     cy.contains('Adicionar ao carrinho').click()
     cy.contains('Adicionar ao carrinho').click()
-    cy.contains('Cart (1)').should('exist')
+    cy.contains('Cart (2)').should('exist')
   })
 
   it('should be able to search for a product and add it to the cart', () => {
