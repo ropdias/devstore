@@ -3,7 +3,6 @@ import colors from 'tailwindcss/colors'
 
 import { api } from '@/data/api'
 import { Product } from '@/data/types/product'
-import { env } from '@/env'
 
 export const runtime = 'edge'
 
@@ -39,7 +38,13 @@ export default async function Image({
   const { slug } = await params
   const product = await getProduct(slug)
 
-  const productImageURL = new URL(product.image, env.APP_URL).toString()
+  const base = process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : 'http://localhost:3000'
+
+  const productImageURL = product.image.startsWith('http')
+    ? product.image
+    : new URL(product.image, base).toString()
 
   /* eslint-disable @next/next/no-img-element */
   return new ImageResponse(
