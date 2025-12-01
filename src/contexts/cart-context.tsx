@@ -9,7 +9,8 @@ interface CartItem {
 
 interface CartContextType {
   items: CartItem[]
-  addToCart: (productId: number) => void
+  addToCart: (productId: number, quantity?: number) => void
+  removeFromCart: (productId: number) => void
 }
 
 const CartContext = createContext({} as CartContextType)
@@ -17,26 +18,37 @@ const CartContext = createContext({} as CartContextType)
 export function CartProvider({ children }: { children: ReactNode }) {
   const [cartItems, setCartItems] = useState<CartItem[]>([])
 
-  function addToCart(productId: number) {
+  function addToCart(productId: number, quantity = 1) {
+    if (quantity <= 0) return
+
     setCartItems((state) => {
-      const productInCart = state.some((item) => item.productId === productId)
+      console.log('adicionando', productId, quantity)
+      console.log('estado atual', state)
+      const productInCart = state.find((item) => item.productId === productId)
 
       if (productInCart) {
-        return state.map((item) => {
-          if (item.productId === productId) {
-            return { ...item, quantity: item.quantity + 1 }
-          } else {
-            return item
-          }
-        })
-      } else {
-        return [...state, { productId, quantity: 1 }]
+        console.log('entrou')
+        return state.map((item) =>
+          item.productId === productId
+            ? { ...item, quantity: item.quantity + quantity }
+            : item,
+        )
       }
+
+      return [...state, { productId, quantity }]
     })
   }
 
+  function removeFromCart(productId: number) {
+    setCartItems((state) =>
+      state.filter((item) => item.productId !== productId),
+    )
+  }
+
   return (
-    <CartContext.Provider value={{ items: cartItems, addToCart }}>
+    <CartContext.Provider
+      value={{ items: cartItems, addToCart, removeFromCart }}
+    >
       {children}
     </CartContext.Provider>
   )
