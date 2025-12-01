@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { redirect } from 'next/navigation'
 
 import { api } from '@/data/api'
 import { Product } from '@/data/types/product'
@@ -24,6 +25,10 @@ async function searchProducts(query: string): Promise<Product[]> {
 
 export default async function Search({ searchParams }: SearchProps) {
   const { q: query } = await searchParams
+
+  if (!query) {
+    redirect('/')
+  }
 
   const products = await searchProducts(query)
 
