@@ -1,9 +1,7 @@
 import { env } from '@/env'
 
 export function api(path: string, init?: RequestInit) {
-  const baseUrl = process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : env.NEXT_PUBLIC_API_BASE_URL
+  const baseUrl = env.NEXT_PUBLIC_API_BASE_URL
   const apiPrefix = '/api'
   const url = new URL(apiPrefix.concat(path), baseUrl)
 
