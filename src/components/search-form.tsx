@@ -17,10 +17,6 @@ export function SearchForm() {
 
     const query = data.q
 
-    if (!query) {
-      return null
-    }
-
     router.push(`/search?q=${query}`)
   }
 
