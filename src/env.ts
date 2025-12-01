@@ -6,9 +6,7 @@ export const env = createEnv({
    * Serverside Environment variables, not available on the client.
    * Will throw if you access these variables on the client.
    */
-  server: {
-    APP_URL: z.string().url(),
-  },
+  server: {},
 
   /*
    * Environment variables available on the client (and server).
@@ -26,7 +24,6 @@ export const env = createEnv({
    * 💡 You'll get type errors if not all variables from `server` & `client` are included here.
    */
   runtimeEnv: {
-    APP_URL: process.env.APP_URL,
     NEXT_PUBLIC_API_BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL,
   },
 })
