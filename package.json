@@ -11,26 +11,26 @@
   "dependencies": {
     "@t3-oss/env-nextjs": "^0.11.1",
     "lucide-react": "^0.462.0",
-    "next": "15.0.3",
-    "react": "19.0.0-rc-66855b96-20241106",
-    "react-dom": "19.0.0-rc-66855b96-20241106",
-    "tailwind-merge": "^2.5.5",
-    "zod": "^3.23.8"
+    "next": "^15.5.7",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
+    "tailwind-merge": "^2.6.0",
+    "zod": "^3.25.76"
   },
   "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "cypress": "^13.16.1",
-    "eslint": "^8",
-    "eslint-config-next": "15.0.3",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.2.1",
+    "@types/node": "^20.19.26",
+    "@types/react": "^18.3.27",
+    "@types/react-dom": "^18.3.7",
+    "cypress": "^13.17.0",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^15.5.7",
+    "eslint-config-prettier": "^9.1.2",
+    "eslint-plugin-prettier": "^5.5.4",
     "eslint-plugin-simple-import-sort": "^12.1.1",
-    "postcss": "^8",
-    "prettier": "^3.4.1",
-    "prettier-plugin-tailwindcss": "^0.6.9",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "postcss": "^8.5.6",
+    "prettier": "^3.7.4",
+    "prettier-plugin-tailwindcss": "^0.6.14",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^5.9.3"
   }
 }
